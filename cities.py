@@ -9,6 +9,14 @@ def read_cities(file_name):
 
       Alabama -> Alaska -> Arizona -> ... -> Wyoming -> Alabama.
     """
+    cities = []
+    with open(file_name) as f:
+        for line in f.readlines():
+            x = line.split("\t")
+            cities.append((str(x[0]), str(x[1]), eval(x[2]), eval(x[3])))
+
+    return cities
+
     pass
   
 def print_cities(road_map):
@@ -71,7 +79,9 @@ def main():
     Reads in, and prints out, the city data, then creates the "best"
     cycle and prints it out.
     """
-    pass
+    file = input("Type txt file: ")
+    x = read_cities(file)
+    print(x)
 
 if __name__ == "__main__":
     main()
