@@ -35,7 +35,23 @@ def compute_total_distance(road_map):
     the connections in the `road_map`. Remember that it's a cycle, so that 
     (for example) in the initial `road_map`, Wyoming connects to Alabama...
     """
-    pass
+    total = 0.0
+
+    for i, e in enumerate(road_map):
+        print(i)
+        x1 = road_map[i][2]
+        y1 = road_map[i][3]
+        print(str(x1) + str(y1))
+
+        if i + 1 == len(road_map):
+            x2 = road_map[0][2]
+            y2 = road_map[0][3]
+        else:
+            x2 = road_map[i+1][2]
+            y2 = road_map[i+1][3]
+        print(str(x2) + str(y2))
+
+
 
 def swap_adjacent_cities(road_map, index):
     """
@@ -86,8 +102,10 @@ def main():
     road_map = read_cities(file)
     print(road_map)
     print("")
-    x = print_cities(road_map)
-    print(x)
+    # x = print_cities(road_map)
+    # print(x)
+    compute_total_distance(road_map)
+
 
 if __name__ == "__main__":
     main()

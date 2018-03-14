@@ -13,4 +13,5 @@ def test_print_cities():
 def test_compute_total_distance():
     co_ordinates = [("state", "city", 1, 2), ("state", "city", 2, 2), ("state", "city", 3, 2)]
     total = 2.0
+
     assert total == round(compute_total_distance(co_ordinates), 2)
