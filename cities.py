@@ -84,6 +84,8 @@ def main():
     """
     file = input("Type txt file: ")
     road_map = read_cities(file)
+    print(road_map)
+    print("")
     x = print_cities(road_map)
     print(x)
 
