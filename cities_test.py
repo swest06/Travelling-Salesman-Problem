@@ -11,7 +11,17 @@ def test_print_cities():
 
 
 def test_compute_total_distance():
-    co_ordinates = [("state", "city", 1, 2), ("state", "city", 2, 2), ("state", "city", 3, 2)]
+    co_ordinates = [("state A", "city A", 1, 2), ("state B", "city B", 2, 2), ("state C", "city C", 3, 2)]
     total = 4.00
 
     assert total == round(compute_total_distance(co_ordinates), 2)
+
+
+def test_swap_adjacent_cities():
+    co_ordinates = [("state A", "city A", 1, 2), ("state B", "city B", 2, 2), ("state C", "city C", 3, 2)]
+    index = 0
+    new_co_ordinates =[("state B", "city B", 2, 2), ("state A", "city A", 1, 2), ("state C", "city C", 3, 2)]
+    result = (new_co_ordinates, compute_total_distance(new_co_ordinates))
+
+    assert result == swap_adjacent_cities(co_ordinates, index)
+

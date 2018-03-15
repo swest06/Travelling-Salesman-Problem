@@ -1,5 +1,6 @@
 import math
 
+
 def read_cities(file_name):
     """
     Read in the cities from the given `file_name`, and return 
@@ -56,7 +57,6 @@ def compute_total_distance(road_map):
     return total
 
 
-
 def swap_adjacent_cities(road_map, index):
     """
     Take the city at location `index` in the `road_map`, and the city at 
@@ -66,7 +66,9 @@ def swap_adjacent_cities(road_map, index):
 
         (new_road_map, new_total_distance)
     """
+
     pass
+
 
 def swap_cities(road_map, index1, index2):
     """
@@ -81,6 +83,7 @@ def swap_cities(road_map, index1, index2):
     """
     pass
 
+
 def find_best_cycle(road_map):
     """
     Using a combination of `swap_cities` and `swap_adjacent_cities`, 
@@ -89,6 +92,7 @@ def find_best_cycle(road_map):
     """
     pass
 
+
 def print_map(road_map):
     """
     Prints, in an easily understandable format, the cities and 
@@ -96,6 +100,7 @@ def print_map(road_map):
     and the total cost.
     """
     pass
+
 
 def main():
     """

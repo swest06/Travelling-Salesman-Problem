@@ -19,6 +19,7 @@ from cities import *
 # sum += round(math.sqrt((x-l)**2 + (y-r)**2), 2)
 # print(sum)
 
-co_ordinates = [("state", "city", 1, 2), ("state", "city", 2, 2), ("state", "city", 3, 2)]
+co_ordinates = [("state A", "city A", 4, 5), ("state B", "city B", 2, 2), ("state C", "city C", 3, 2)]
+co_ordinates2 = [("state B", "city B", 2, 2), ("state A", "city A", 4, 5), ("state C", "city C", 3, 2)]
 print(compute_total_distance(co_ordinates))
 
