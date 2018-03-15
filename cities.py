@@ -29,6 +29,7 @@ def print_cities(road_map):
         list.append(elem)
     return list
 
+
 def compute_total_distance(road_map):
     """
     Returns, as a floating point number, the sum of the distances of all 
@@ -38,10 +39,9 @@ def compute_total_distance(road_map):
     total = 0.0
 
     for i, e in enumerate(road_map):
-        print(i)
+
         x1 = road_map[i][2]
         y1 = road_map[i][3]
-        print(str(x1) + str(y1))
 
         if i + 1 == len(road_map):
             x2 = road_map[0][2]
@@ -49,7 +49,11 @@ def compute_total_distance(road_map):
         else:
             x2 = road_map[i+1][2]
             y2 = road_map[i+1][3]
-        print(str(x2) + str(y2))
+
+        sum1 = math.sqrt((x1 - x2)**2 + (y1 - y2)**2)
+        total += sum1
+
+    return total
 
 
 
