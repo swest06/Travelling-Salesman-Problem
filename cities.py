@@ -66,6 +66,28 @@ def swap_adjacent_cities(road_map, index):
 
         (new_road_map, new_total_distance)
     """
+    # create new list of tuples with original 'road_map'
+    new_road_map = road_map
+
+    # Get indexes of elements
+    if index + 1 == len(road_map):
+        a = road_map[index]
+        b = road_map[0]
+    else:
+        a = road_map[index]
+        b = road_map[index+1]
+
+    # Swap element positions
+    new_road_map[index] = b
+    new_road_map[index + 1] = a
+
+    # Compute new total distance
+    new_total_distance = compute_total_distance(new_road_map)
+
+    result = (new_road_map, new_total_distance)
+
+    return result
+
 
     pass
 

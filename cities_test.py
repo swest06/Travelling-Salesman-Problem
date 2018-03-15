@@ -20,7 +20,7 @@ def test_compute_total_distance():
 def test_swap_adjacent_cities():
     co_ordinates = [("state A", "city A", 1, 2), ("state B", "city B", 2, 2), ("state C", "city C", 3, 2)]
     index = 0
-    new_co_ordinates =[("state B", "city B", 2, 2), ("state A", "city A", 1, 2), ("state C", "city C", 3, 2)]
+    new_co_ordinates = [("state B", "city B", 2, 2), ("state A", "city A", 1, 2), ("state C", "city C", 3, 2)]
     result = (new_co_ordinates, compute_total_distance(new_co_ordinates))
 
     assert result == swap_adjacent_cities(co_ordinates, index)
