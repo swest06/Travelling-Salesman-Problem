@@ -89,9 +89,6 @@ def swap_adjacent_cities(road_map, index):
     return result
 
 
-    pass
-
-
 def swap_cities(road_map, index1, index2):
     """
     Take the city at location `index` in the `road_map`, and the 
@@ -103,7 +100,22 @@ def swap_cities(road_map, index1, index2):
     Allow for the possibility that `index1=index2`,
     and handle this case correctly.
     """
-    pass
+    # create new list of tuples with original 'road_map'
+    new_road_map = road_map
+
+    if index1 == index2:
+        print("indexes contain identical values")
+        pass
+    else:
+        a = road_map[index1]
+        b = road_map[index2]
+        new_road_map[index1] = b
+        new_road_map[index2] = a
+
+    new_total_distance = compute_total_distance(new_road_map)
+    result = (new_road_map, new_total_distance)
+
+    return result
 
 
 def find_best_cycle(road_map):
