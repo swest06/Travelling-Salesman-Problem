@@ -1,5 +1,5 @@
 import math
-
+import random
 
 def read_cities(file_name):
     """
@@ -120,6 +120,8 @@ def swap_cities(road_map, index1, index2):
     new_total_distance = compute_total_distance(new_road_map)
     result = (new_road_map, new_total_distance)
 
+    print(result[1])
+
     return result
 
 
@@ -129,19 +131,46 @@ def find_best_cycle(road_map):
     try `10000` swaps, and each time keep the best cycle found so far. 
     After `10000` swaps, return the best cycle found so far.
     """
-    count = 10000
 
-    while count > 0:
+
+    swaps = 1000
+    # for i, e in enumerate(road_map):
+    #     print("outer loop")
+    #     print(i)
+    #     tup1 = swap_adjacent_cities(road_map, i)
+    #         dis1 = tup1[1]
+    #         print(dis1)
+    #
+    #         for j, f in enumerate(road_map):
+    #             print("inner loop")
+    #             print(i, j)
+    #             tup2 = swap_cities(road_map, i, j)
+
+    finished = False
+    while not finished:
+
         for i, e in enumerate(road_map):
-            swap_adjacent_cities(road_map, i)
-            print("outer loop")
-            print(i)
-            # for j, f in enumerate(road_map):
-            #     print("inner loop")
-            #     print(i, j)
+            num = int(len(road_map) * random.random() // 1)
 
+            tup1 = swap_adjacent_cities(road_map, i)
+            swaps -= 1
+            winner = tup1
 
-    pass
+            if swaps > 0:
+                tup2 = swap_cities(road_map, i, num)
+                swaps -= 1
+
+                if tup2[1] < tup1[1]:
+                    winner = tup2
+
+            if winner[1] < compute_total_distance(road_map):
+                road_map = winner[0]
+
+            if swaps < 1:
+                finished = True
+                break
+
+    return road_map
 
 
 def print_map(road_map):
@@ -159,12 +188,7 @@ def main():
     cycle and prints it out.
     """
     file = input("Type txt file: ")
-    road_map = read_cities(file)
-    print(road_map)
-    print("")
-    # x = print_cities(road_map)
-    # print(x)
-    compute_total_distance(road_map)
+    print(read_cities(file))
 
 
 if __name__ == "__main__":
