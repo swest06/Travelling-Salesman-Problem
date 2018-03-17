@@ -70,16 +70,21 @@ def swap_adjacent_cities(road_map, index):
     new_road_map = road_map
 
     # Get indexes of elements
-    if index + 1 == len(road_map):
+
+    if index+1 == len(road_map):
         a = road_map[index]
         b = road_map[0]
+
+        # Swap element positions
+        new_road_map[index] = b
+        new_road_map[0] = a
     else:
         a = road_map[index]
         b = road_map[index+1]
 
-    # Swap element positions
-    new_road_map[index] = b
-    new_road_map[index + 1] = a
+        # Swap element positions
+        new_road_map[index] = b
+        new_road_map[index + 1] = a
 
     # Compute new total distance
     new_total_distance = compute_total_distance(new_road_map)
@@ -124,6 +129,18 @@ def find_best_cycle(road_map):
     try `10000` swaps, and each time keep the best cycle found so far. 
     After `10000` swaps, return the best cycle found so far.
     """
+    count = 10000
+
+    while count > 0:
+        for i, e in enumerate(road_map):
+            swap_adjacent_cities(road_map, i)
+            print("outer loop")
+            print(i)
+            # for j, f in enumerate(road_map):
+            #     print("inner loop")
+            #     print(i, j)
+
+
     pass
 
 

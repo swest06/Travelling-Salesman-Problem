@@ -1,5 +1,4 @@
 import pytest
-
 from cities import*
 
 
@@ -28,9 +27,10 @@ def test_swap_adjacent_cities():
 
 def test_swap_cities():
     co_ordinates = [("state A", "city A", 1, 2), ("state B", "city B", 2, 2), ("state C", "city C", 3, 2)]
+    new_co_ordinates = [("state C", "city C", 3, 2), ("state B", "city B", 2, 2), ("state A", "city A", 1, 2)]
     index1 = 0
     index2 = 2
-    new_co_ordinates = [("state C", "city C", 3, 2), ("state B", "city B", 2, 2), ("state A", "city A", 1, 2)]
+
     result1 = (new_co_ordinates, compute_total_distance(new_co_ordinates))
     result2 = (co_ordinates, compute_total_distance(co_ordinates))
 
