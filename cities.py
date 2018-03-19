@@ -25,14 +25,16 @@ def print_cities(road_map):
     Prints a list of cities, along with their locations. 
     Print only one or two digits after the decimal point.
     """
-    list = []
+    list_cities = []
     for i in road_map:
         x = round(i[2], 2)
         y = round(i[3], 2)
-        elem = '{} {} {}'.format(i[1], x, y)
-        list.append(elem)
-        print(list)
-    return list
+        elem = '{}  Latitude: {}  Longitude: {}'.format(i[1], x, y)
+        list_cities.append(elem)
+
+    print(list_cities)
+
+    return list_cities
 
 
 def compute_total_distance(road_map):
@@ -174,12 +176,15 @@ def find_best_cycle(road_map):
             winner = tup1
 
             if swaps > 0:
+                # 2 Opt swap at random
                 tup2 = swap_cities(road_map, i, num)
                 swaps -= 1
 
+                # Keeps shortest route
                 if tup2[1] < tup1[1]:
                     winner = tup2
 
+            # Compares and keeps shortest route
             if winner[1] < compute_total_distance(road_map):
                 road_map = winner[0]
 
@@ -208,9 +213,10 @@ def print_map(road_map):
 
         dist = round(distance(lat1, long1, lat2, long2), 2)
         print("{} to {} = {} miles".format(city1, city2, dist))
+
         print("")
 
-    print("Total distance = {} miles".format(compute_total_distance(road_map)))
+    print("Total distance = {} miles".format(round(compute_total_distance(road_map), 2)))
 
 
 def main():
@@ -218,9 +224,20 @@ def main():
     Reads in, and prints out, the city data, then creates the "best"
     cycle and prints it out.
     """
+    # Reads txt file
     file = input("Type txt file: ")
     road_map = read_cities(file)
+    print("")
+
+    # Prints cities
+    print("City data:")
     print_cities(road_map)
+    print("")
+
+    # Finds shortest route and prints it
+    road_map = find_best_cycle(road_map)
+    print("Best route found:")
+    print_map(road_map)
 
 
 if __name__ == "__main__":
