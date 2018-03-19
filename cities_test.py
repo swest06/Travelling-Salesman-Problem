@@ -10,8 +10,8 @@ def test_print_cities():
 
 
 def test_compute_total_distance():
-    co_ordinates = [("state A", "city A", 1, 2), ("state B", "city B", 2, 2), ("state C", "city C", 3, 2)]
-    total = 4.00
+    co_ordinates = [("state A", "city A", 0, 0), ("state B", "city B", 0, 1), ("state C", "city C", 0, 2)]
+    total = 276.18
 
     assert total == round(compute_total_distance(co_ordinates), 2)
 
