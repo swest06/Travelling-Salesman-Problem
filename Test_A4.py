@@ -20,8 +20,14 @@ co_ordinates = [("state A", "city A", 4, 5), ("state B", "city B", 2, 2), ("stat
 co_ordinates2 = [("state B", "city B", 2, 2), ("state A", "city A", 4, 5), ("state C", "city C", 3, 2)]
 # print(compute_total_distance(co_ordinates))
 #find_best_cycle(co_ordinates)
-#swap_adjacent_cities(co_ordinates, 2)
-swap_cities(co_ordinates, 1, 2)
-
+new = swap_adjacent_cities(co_ordinates, 2)
+print(co_ordinates)
+print(new)
+# print(co_ordinates)
+# swap_cities(co_ordinates, 1, 2)
+#print(find_best_cycle(co_ordinates))
+#print(compute_total_distance(co_ordinates))
+#new = swap_cities(co_ordinates, 1, 2)
+#print(new is co_ordinates)
 if __name__ == "__main__":
     main()

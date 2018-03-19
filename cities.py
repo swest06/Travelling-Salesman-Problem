@@ -1,5 +1,7 @@
 import math
 import random
+from copy import deepcopy
+
 
 def read_cities(file_name):
     """
@@ -67,24 +69,31 @@ def swap_adjacent_cities(road_map, index):
         (new_road_map, new_total_distance)
     """
     # create new list of tuples with original 'road_map'
-    new_road_map = road_map
+    new_road_map = deepcopy(road_map)
 
     # Get indexes of elements
 
-    if index+1 == len(road_map):
-        a = road_map[index]
-        b = road_map[0]
+    a = road_map[index]
+    b = road_map[(index+1) % len(road_map)]
 
-        # Swap element positions
-        new_road_map[index] = b
-        new_road_map[0] = a
-    else:
-        a = road_map[index]
-        b = road_map[index+1]
+    new_road_map[index] = b
+    new_road_map[(index + 1) % len(road_map)] = a
 
-        # Swap element positions
-        new_road_map[index] = b
-        new_road_map[index + 1] = a
+
+    # if index+1 == len(road_map):
+    #     a = road_map[index]
+    #     b = road_map[0]
+    #
+    #     # Swap element positions
+    #     new_road_map[index] = b
+    #     new_road_map[0] = a
+    # else:
+    #     a = road_map[index]
+    #     b = road_map[index+1]
+    #
+    #     # Swap element positions
+    #     new_road_map[index] = b
+    #     new_road_map[index + 1] = a
 
     # Compute new total distance
     new_total_distance = compute_total_distance(new_road_map)
@@ -106,10 +115,10 @@ def swap_cities(road_map, index1, index2):
     and handle this case correctly.
     """
     # create new list of tuples with original 'road_map'
-    new_road_map = road_map
+    new_road_map = deepcopy(road_map)
 
     if index1 == index2:
-        print("indexes contain identical values")
+
         pass
     else:
         a = road_map[index1]
@@ -119,8 +128,6 @@ def swap_cities(road_map, index1, index2):
 
     new_total_distance = compute_total_distance(new_road_map)
     result = (new_road_map, new_total_distance)
-
-    print(result[1])
 
     return result
 
@@ -132,8 +139,10 @@ def find_best_cycle(road_map):
     After `10000` swaps, return the best cycle found so far.
     """
 
-
     swaps = 1000
+
+    # DELETE WHEN FINISHED!
+
     # for i, e in enumerate(road_map):
     #     print("outer loop")
     #     print(i)
@@ -150,6 +159,8 @@ def find_best_cycle(road_map):
     while not finished:
 
         for i, e in enumerate(road_map):
+            print(swaps)
+
             num = int(len(road_map) * random.random() // 1)
 
             tup1 = swap_adjacent_cities(road_map, i)
@@ -170,6 +181,7 @@ def find_best_cycle(road_map):
                 finished = True
                 break
 
+    print("done")
     return road_map
 
 
