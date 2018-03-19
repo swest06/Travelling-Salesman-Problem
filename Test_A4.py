@@ -39,5 +39,10 @@ print(a)
 print(b)
 print(c)
 print(sum1)
+co_ordinates = [("state A", "city A", 0, 0), ("state B", "city B", 0, 1), ("state C", "city C", 0, 2)]
+# Maine	Augusta	44.323535	-69.765261
+# Missouri	Jefferson City	38.572954	-92.189283
+
+print(compute_total_distance(co_ordinates))
 if __name__ == "__main__":
     main()

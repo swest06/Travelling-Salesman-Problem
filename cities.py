@@ -1,5 +1,6 @@
 import math
 import random
+from earth_distance import *
 from copy import deepcopy
 
 
@@ -43,17 +44,22 @@ def compute_total_distance(road_map):
 
     for i, e in enumerate(road_map):
 
-        x1 = road_map[i][2]
-        y1 = road_map[i][3]
+        lat1 = road_map[i][2]
+        long1 = road_map[i][3]
 
-        if i + 1 == len(road_map):
-            x2 = road_map[0][2]
-            y2 = road_map[0][3]
-        else:
-            x2 = road_map[i+1][2]
-            y2 = road_map[i+1][3]
+        lat2 = road_map[(i + 1) % len(road_map)][2]
+        long2 = road_map[(i + 1) % len(road_map)][3]
 
-        sum1 = math.sqrt((x1 - x2)**2 + (y1 - y2)**2)
+        # if i + 1 == len(road_map):
+        #     x2 = road_map[0][2]
+        #     y2 = road_map[0][3]
+        # else:
+        #     x2 = road_map[i+1][2]
+        #     y2 = road_map[i+1][3]
+
+        # sum1 = math.sqrt((x1 - x2)**2 + (y1 - y2)**2)
+        sum1 = distance(lat1, long1, lat2, long2)
+
         total += sum1
 
     return total
