@@ -181,17 +181,19 @@ def print_map(road_map):
     """
     # Assume road_map has been changed and shortest route found
     for i, e in enumerate(road_map):
+        # Assign cities to variables
         city1 = road_map[i][1]
         city2 = road_map[(i + 1) % len(road_map)][1]
 
+        # Assign latitude and longitude values to variables
         lat1 = road_map[i][2]
         long1 = road_map[i][3]
         lat2 = road_map[(i + 1) % len(road_map)][2]
         long2 = road_map[(i + 1) % len(road_map)][3]
 
+        # Calculate distance between cities and print
         dist = round(distance(lat1, long1, lat2, long2), 2)
         print("{} to {} = {} miles".format(city1, city2, dist))
-
         print("")
 
     print("Total distance = {} miles".format(round(compute_total_distance(road_map), 2)))
