@@ -1,4 +1,3 @@
-import math
 import random
 from earth_distance import *
 from copy import deepcopy
@@ -29,6 +28,8 @@ def print_cities(road_map):
     for i in road_map:
         x = round(i[2], 2)
         y = round(i[3], 2)
+
+        # Creates new list element to append to list
         elem = '{}  Latitude: {}  Longitude: {}'.format(i[1], x, y)
         list_cities.append(elem)
 
@@ -47,21 +48,14 @@ def compute_total_distance(road_map):
 
     for i, e in enumerate(road_map):
 
+        # Assign latitude and longitude values to variables
         lat1 = road_map[i][2]
         long1 = road_map[i][3]
 
         lat2 = road_map[(i + 1) % len(road_map)][2]
         long2 = road_map[(i + 1) % len(road_map)][3]
 
-        # if i + 1 == len(road_map):
-        #     x2 = road_map[0][2]
-        #     y2 = road_map[0][3]
-        # else:
-        #     x2 = road_map[i+1][2]
-        #     y2 = road_map[i+1][3]
-
-        # sum1 = math.sqrt((x1 - x2)**2 + (y1 - y2)**2)
-
+        # Calculate total distance
         sum1 = distance(lat1, long1, lat2, long2)
 
         total += sum1
@@ -82,27 +76,11 @@ def swap_adjacent_cities(road_map, index):
     new_road_map = deepcopy(road_map)
 
     # Get indexes of elements
-
     a = road_map[index]
     b = road_map[(index+1) % len(road_map)]
 
     new_road_map[index] = b
     new_road_map[(index + 1) % len(road_map)] = a
-
-    # if index+1 == len(road_map):
-    #     a = road_map[index]
-    #     b = road_map[0]
-    #
-    #     # Swap element positions
-    #     new_road_map[index] = b
-    #     new_road_map[0] = a
-    # else:
-    #     a = road_map[index]
-    #     b = road_map[index+1]
-    #
-    #     # Swap element positions
-    #     new_road_map[index] = b
-    #     new_road_map[index + 1] = a
 
     # Compute new total distance
     new_total_distance = compute_total_distance(new_road_map)
@@ -148,10 +126,9 @@ def find_best_cycle(road_map):
     After `10000` swaps, return the best cycle found so far.
     """
 
-    swaps = 1000
+    swaps = 10000
 
-    # DELETE WHEN FINISHED!
-
+    # DELETE LATER!
     # for i, e in enumerate(road_map):
     #     print("outer loop")
     #     print(i)
@@ -171,6 +148,7 @@ def find_best_cycle(road_map):
 
             num = int(len(road_map) * random.random() // 1)
 
+            # Swap adjacent cities and compute new total distance
             tup1 = swap_adjacent_cities(road_map, i)
             swaps -= 1
             winner = tup1
@@ -180,11 +158,11 @@ def find_best_cycle(road_map):
                 tup2 = swap_cities(road_map, i, num)
                 swaps -= 1
 
-                # Keeps shortest route
+                # Compares swaps and keeps shortest route
                 if tup2[1] < tup1[1]:
                     winner = tup2
 
-            # Compares and keeps shortest route
+            # Compares new route with old route and keeps shortest route
             if winner[1] < compute_total_distance(road_map):
                 road_map = winner[0]
 
