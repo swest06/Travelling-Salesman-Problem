@@ -31,6 +31,7 @@ def print_cities(road_map):
         y = round(i[3], 2)
         elem = '{} {} {}'.format(i[1], x, y)
         list.append(elem)
+        print(list)
     return list
 
 
@@ -58,6 +59,7 @@ def compute_total_distance(road_map):
         #     y2 = road_map[i+1][3]
 
         # sum1 = math.sqrt((x1 - x2)**2 + (y1 - y2)**2)
+
         sum1 = distance(lat1, long1, lat2, long2)
 
         total += sum1
@@ -84,7 +86,6 @@ def swap_adjacent_cities(road_map, index):
 
     new_road_map[index] = b
     new_road_map[(index + 1) % len(road_map)] = a
-
 
     # if index+1 == len(road_map):
     #     a = road_map[index]
@@ -165,7 +166,6 @@ def find_best_cycle(road_map):
     while not finished:
 
         for i, e in enumerate(road_map):
-            print(swaps)
 
             num = int(len(road_map) * random.random() // 1)
 
@@ -187,7 +187,6 @@ def find_best_cycle(road_map):
                 finished = True
                 break
 
-    print("done")
     return road_map
 
 
@@ -206,7 +205,8 @@ def main():
     cycle and prints it out.
     """
     file = input("Type txt file: ")
-    print(read_cities(file))
+    road_map = read_cities(file)
+    print_cities(road_map)
 
 
 if __name__ == "__main__":
