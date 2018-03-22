@@ -2,11 +2,11 @@ import pytest
 from cities import*
 
 
-def test_print_cities():
-    road_map = [('Alabama', 'Montgomery', 32.361538, -86.279118), ('Alaska', 'Juneau', 58.301935, -134.41974), ('Arizona', 'Phoenix', 33.448457, -112.073844)]
-    print_city = ['Montgomery 32.36 -86.28', 'Juneau 58.3 -134.42', 'Phoenix 33.45 -112.07']
-
-    assert print_city == print_cities(road_map)
+# def test_print_cities():
+#     road_map = [('Alabama', 'Montgomery', 32.361538, -86.279118), ('Alaska', 'Juneau', 58.301935, -134.41974), ('Arizona', 'Phoenix', 33.448457, -112.073844)]
+#     print_city = ['Montgomery 32.36 -86.28', 'Juneau 58.3 -134.42', 'Phoenix 33.45 -112.07']
+#
+#     assert print_city == print_cities(road_map)
 
 
 def test_compute_total_distance():
@@ -36,3 +36,8 @@ def test_swap_cities():
 
     assert result1 == swap_cities(co_ordinates, index1, index2)
     assert result2 == swap_cities(co_ordinates, index1, index1)
+
+
+def test_find_best_cycle():
+    road_map = [('Alabama', 'Montgomery', 32.361538, -86.279118), ('Alaska', 'Juneau', 58.301935, -134.41974), ('Arizona', 'Phoenix', 33.448457, -112.073844)]
+    assert (compute_total_distance(find_best_cycle(road_map)) < compute_total_distance(road_map))

@@ -29,11 +29,13 @@ def print_cities(road_map):
         x = round(i[2], 2)
         y = round(i[3], 2)
 
-        # Creates new list element to append to list
-        elem = '{}  Latitude: {}  Longitude: {}'.format(i[1], x, y)
-        list_cities.append(elem)
+        spaces = 20 - len(i[1])
+        spaces = " "*spaces
 
-    print(list_cities)
+        # Creates new list element to append to list
+        elem = '{}{}Latitude: {:0.2f}        Longitude: {}'.format(i[1], spaces, x, y)
+        list_cities.append(elem)
+        print(elem)
 
     return list_cities
 
@@ -59,7 +61,7 @@ def compute_total_distance(road_map):
         sum1 = distance(lat1, long1, lat2, long2)
 
         total += sum1
-
+    #print(total)
     return total
 
 
@@ -129,7 +131,7 @@ def find_best_cycle(road_map):
     swaps = 10000
 
     # DELETE LATER!
-    # for i, e in enumerate(road_map):
+    # for i,  in enumerate(road_map):
     #     print("outer loop")
     #     print(i)
     #     tup1 = swap_adjacent_cities(road_map, i)
