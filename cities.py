@@ -1,3 +1,8 @@
+'''Sean West swest06.
+   Travelling salesman problem.
+   Finds the shortest route to visit all locations on a map'''
+
+
 import random
 from earth_distance import *
 from copy import deepcopy
@@ -129,19 +134,6 @@ def find_best_cycle(road_map):
     """
 
     swaps = 10000
-
-    # DELETE LATER!
-    # for i,  in enumerate(road_map):
-    #     print("outer loop")
-    #     print(i)
-    #     tup1 = swap_adjacent_cities(road_map, i)
-    #         dis1 = tup1[1]
-    #         print(dis1)
-    #
-    #         for j, f in enumerate(road_map):
-    #             print("inner loop")
-    #             print(i, j)
-    #             tup2 = swap_cities(road_map, i, j)
 
     finished = False
     while not finished:
